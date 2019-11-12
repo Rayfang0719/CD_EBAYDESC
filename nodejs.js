@@ -1,6 +1,14 @@
+const express = require('express');
+const app = express();
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+app.use(express.static("public"));
+
+
 var request = require('request');
-var n =0;
-// setInterval(()=>{
+var n =1000*60*15;
+setInterval(()=>{
   request.get('https://www.cyclingdeal.com.au/export/rae/eBayDescription.csv', function (error, response, body) {
   if (!error && response.statusCode == 200) {
 
@@ -60,11 +68,11 @@ var n =0;
 
 
     }
-    n++;
+
     // var pathName ="out"+n+".csv";
     const createCsvWriter = require('csv-writer').createObjectCsvWriter;
     const csvWriter = createCsvWriter({
-      path: "out.csv",
+      path: "./public/out.csv",
       header: [
         { id: 'sku', title: 'SKU' },
         // { id: 'description', title: 'oldDescription' },
@@ -80,4 +88,6 @@ var n =0;
       .then(() => console.log('The CSV file was written successfully'));
   }
 });
-// },10000)
+},1000)
+
+app.listen(3000)
