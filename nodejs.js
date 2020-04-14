@@ -8,7 +8,7 @@ app.use(express.static("public"));
 
 var request = require('request');
 var n =1000*60*15;
-// setInterval(()=>{
+setInterval(()=>{
   request.get('https://www.cyclingdeal.com.au/export/rae/eBayDescription.csv', function (error, response, body) {
   // request.get('./public/U-YC-100BH.csv', function (error, response, body) {
 
@@ -93,6 +93,6 @@ var n =1000*60*15;
       .then(() => console.log('The CSV file was written successfully'));
   }
 });
-// },n)
+},n)
 
 app.listen(3001)
