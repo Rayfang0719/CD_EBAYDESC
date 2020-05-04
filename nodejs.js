@@ -41,7 +41,9 @@ setInterval(()=>{
       // 1:find youtube VIDEO ID
       var prefix = "https://www.youtube.com/embed/";
       var res = newData[1].match(/(\<iframe)+.+(https:\/\/www.youtube.com\/embed\/)+\w{11}/);
-     
+     if(newData[0]=='YC-100BH'){
+       console.log(res[1])
+     }
       if (res != null) {
         // console.log(i,res[0]);
       
@@ -93,6 +95,6 @@ setInterval(()=>{
       .then(() => console.log('The CSV file was written successfully'));
   }
 });
-},n)
+},1000)
 
 app.listen(3001)
