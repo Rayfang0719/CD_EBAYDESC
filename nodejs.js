@@ -40,10 +40,8 @@ setInterval(()=>{
       newData[2] = newData[1];
       // 1:find youtube VIDEO ID
       var prefix = "https://www.youtube.com/embed/";
-      var res = newData[1].match(/(\<iframe)+.+(https:\/\/www.youtube.com\/embed\/)+\w{11}/);
-     if(newData[0]=='YC-100BH'){
-       console.log(res[1])
-     }
+      var res = newData[1].match(/(\<iframe)+.+(https:\/\/www.youtube.com\/embed\/)+\S{11}/);
+   
       if (res != null) {
         // console.log(i,res[0]);
       
@@ -64,6 +62,7 @@ setInterval(()=>{
 
       }else{
       // newData[1] = newData[1].replace(/\'/g, '"');
+      newData[1] = newData[1].replace(/(\<iframe).+(<\/iframe>)/g, '');
 
         csv.push({ sku: newData[0], newdescription: newData[1],blank:'' })
 
