@@ -55,6 +55,8 @@ setInterval(()=>{
         // insert video in the beginning
         newData[1] = plugin + newData[1];
        newData[1] = newData[1].replace(/height: 600px;/g,'')
+       newData[1] = newData[1].replace(/width: 970px;/g,'')
+
       // newData[1] = newData[1].replace(/\'/g, '"');
 
        
